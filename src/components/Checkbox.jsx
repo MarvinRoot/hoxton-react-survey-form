@@ -1,30 +1,25 @@
-function Checkbox() {
+function Checkbox(props) {
+
+    function handleOnChange() {
+        let selectedItems = [
+            ...document.querySelectorAll(`input[name="${props.name}"]`),
+          ]
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.value);
+      
+          props.setFormData({ ...props.formData, [props.name]: selectedItems });
+    }
     return (
         <ul>
-        <li>
-          <label
-            ><input name="bestFeatures" type="checkbox" value="colour" />It's
-            yellow!</label
-          >
-        </li>
-        <li>
-          <label
-            ><input name="bestFeatures" type="checkbox" value="sound" />It
-            squeaks!</label
-          >
-        </li>
-        <li>
-          <label
-            ><input name="bestFeatures" type="checkbox" value="logo" />It has a
-            logo!</label
-          >
-        </li>
-        <li>
-          <label
-            ><input name="bestFeatures" type="checkbox" value="size" />Its big!</label
-          >
-        </li>
-      </ul>
+            {Object.keys(props.list).map((item) => {
+                <li key={item}>
+                    <label>
+                        <input onChange={handleOnChange}
+                        name={props.name} type="checkbox" value={item} />
+                    {`${props.list[item]}`}</label>
+                </li>
+            })}
+        </ul>
     )
 }
 

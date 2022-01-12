@@ -1,33 +1,38 @@
 import Checkbox from "./Checkbox"
 import Radio from "./Radio";
 
-const answersSet = {
-    colour: "It's yellow!",
-    sound: "It squeaks!",
-    logo: "It has a logo!",
-    size: "Its big!"
-  };
-  
-  const answersSetTwo = {
-    swimming: "Swimming",
-    bathing: "Bathing",
-    chatting: "Chatting",
-    noTime: "I don't like to spend time with it"
-  };
-
-function Form() {
+function Form(props) {
+    const answersSet = {
+        colour: "It's yellow!",
+        sound: "It squeaks!",
+        logo: "It has a logo!",
+        size: "Its big!"
+      };
+      
+      const answersSetTwo = {
+        swimming: "Swimming",
+        bathing: "Bathing",
+        chatting: "Chatting",
+        noTime: "I don't like to spend time with it"
+      };
     return (
-        <form className="form">
+        <form className="form" onSubmit = {(e)=> e.preventDefault()}>
             <h2>Tell us what you think about your rubber duck!</h2>
 
             <div className="form__group">
                 <h3>What would you say that are the best features of your rubber duck?</h3>
-                <Checkbox/>
+                <Checkbox formData={props.formData} 
+                setFormData={props.setFormData} 
+                name={'bestFeatures'} 
+                list={answersSet}/>
             </div>
 
             <div className="form__group">
                 <h3>What would you say that are the worst bits of your rubber duck?</h3>
-                <Checkbox/>
+                <Checkbox formData={props.formData} 
+                setFormData={props.setFormData}
+                name={'worstFeatures'} 
+                list={answersSet}/>
             </div>
 
             <div className="form__group radio">
@@ -47,7 +52,10 @@ function Form() {
 
             <div className="form__group">
                 <h3>How do you like to spend time with your rubber duck</h3>
-                <Checkbox />
+                <Checkbox formData={props.formData} 
+                setFormData={props.setFormData}
+                name={'timeSpent'}
+                list={answersSetTwo}/>
             </div>
 
             <label

@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
@@ -16,10 +16,11 @@ import Main from "./components/Main";
 }
 
 export default function App() {
+  const [formData, setFormData] = useState(initialForm);
   return (
     <>
       <Header />
-      <Main />
+      <Main formData = {formData} setFormData = {setFormData}/>
     </>
   );
 }
