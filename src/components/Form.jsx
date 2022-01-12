@@ -37,17 +37,23 @@ function Form(props) {
 
             <div className="form__group radio">
                 <h3>How do you rate your rubber duck consistency?</h3>
-                <Radio />
+                <Radio formData={props.formData} 
+                setFormData={props.setFormData}
+                name={'consistency'} />
             </div>
 
             <div className="form__group radio">
                 <h3>How do you rate your rubber duck colour?</h3>
-                <Radio />
+                <Radio formData={props.formData} 
+                setFormData={props.setFormData}
+                name={'colour'}/>
             </div>
 
             <div className="form__group radio">
                 <h3>How do you rate your rubber duck logo?</h3>
-                <Radio />
+                <Radio formData={props.formData} 
+                setFormData={props.setFormData}
+                name={'logo'}/>
             </div>
 
             <div className="form__group">
